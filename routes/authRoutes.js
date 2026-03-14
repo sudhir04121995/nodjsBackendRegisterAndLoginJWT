@@ -1,7 +1,7 @@
 const user = require("../model/user")
 const express = require("express");
 const bcrypt = require("bcryptjs");
-
+const {loginUser} = require("../routes/login")
 const router = express.Router();
 //Register
 router.post("/register",async(req,res)=>{
@@ -25,7 +25,10 @@ router.post("/register",async(req,res)=>{
 } catch (error) {
          res.status(500).json({ error: error.message });
     }
-})
+});
+
+
+router.post("/login", loginUser);
 
 
 module.exports= router
